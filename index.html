@@ -162,6 +162,50 @@
     font-weight: 700;
   }
   .green { color: #22543d; }
+  .digest-panel {
+    background: linear-gradient(135deg, #fef9c3, #fde68a);
+    border: 1px solid #fcd34d;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+  .digest-panel.no-flags {
+    background: #f7fafc;
+    border-color: #e2e8f0;
+  }
+  .digest-panel .digest-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: 700;
+    color: #92400e;
+    margin-bottom: 8px;
+  }
+  .digest-panel.no-flags .digest-label { color: #4a5568; }
+  .digest-panel .digest-headline {
+    font-size: 18px;
+    color: #1a202c;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  .digest-panel .digest-flags { list-style: none; padding: 0; margin: 12px 0 0; }
+  .digest-panel .digest-flags li {
+    background: rgba(255,255,255,0.6);
+    border-left: 3px solid #d97706;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #2d3748;
+  }
+  .digest-panel.no-flags .digest-flags li { border-left-color: #cbd5e0; }
+  .digest-panel .digest-meta {
+    font-size: 12px;
+    color: #78350f;
+    margin-top: 12px;
+  }
+  .digest-panel.no-flags .digest-meta { color: #718096; }
 </style>
 </head>
 <body>
@@ -185,6 +229,15 @@
     <p class="stat-label">Smart-pricing, non-Beverly-Hills version. Compares favorably to a $25K+ facelift or $2K+/yr Botox maintenance.</p>
   </div>
 </div>
+
+<!-- DAILY-SEARCH-PANEL-START — auto-maintained by skincare-daily-search task. Don't hand-edit; the task rewrites this block when flags appear. -->
+<div class="digest-panel no-flags">
+  <div class="digest-label">📰 Latest from the Daily Search</div>
+  <div class="digest-headline">No urgent flags right now — the stack is current.</div>
+  <p style="font-size: 14px; color: #4a5568; margin-top: 8px;">Daily search runs at 9:07 AM Pacific. When it finds new strong-evidence treatments, pricing changes, expired promos, or standout value finds, this panel will surface them here.</p>
+  <div class="digest-meta">Last digest: April 26, 2026 · Initial seed run</div>
+</div>
+<!-- DAILY-SEARCH-PANEL-END -->
 
 <h2 class="section-title">🌿 The Stack at a Glance</h2>
 <div class="card">
