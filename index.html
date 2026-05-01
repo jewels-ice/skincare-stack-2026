@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Skincare Stack — Wrinkles + Dark Spots + Lift</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f5f7fa;
+    color: #2d3748;
+    line-height: 1.6;
+    padding: 20px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+  header { margin-bottom: 28px; }
+  h1 {
+    font-size: 32px;
+    color: #1a202c;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  .tagline {
+    color: #4a5568;
+    font-size: 16px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    color: #718096;
+    font-size: 13px;
+  }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 24px; }
+  .full { grid-column: 1 / -1; }
+  @media (max-width: 768px) {
+    .grid, .grid-3 { grid-template-columns: 1fr; }
+    h1 { font-size: 24px; }
+    body { padding: 12px; }
+  }
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    border: 1px solid #e2e8f0;
+  }
+  .card h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #718096;
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .card h3 {
+    font-size: 18px;
+    color: #1a202c;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .hero {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+  }
+  .hero h2 { color: rgba(255,255,255,0.85); }
+  .hero h3 { color: white; font-size: 22px; }
+  .hero p { color: rgba(255,255,255,0.92); font-size: 15px; margin-top: 8px; }
+  .stat { font-size: 36px; font-weight: 700; margin: 8px 0; }
+  .stat-label { color: #718096; font-size: 13px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 2px solid #e2e8f0;
+    color: #718096;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+  }
+  td { padding: 12px; border-bottom: 1px solid #edf2f7; vertical-align: top; }
+  td.cadence { font-weight: 600; color: #2d3748; white-space: nowrap; }
+  td.treatment { font-weight: 500; }
+  td.purpose { color: #4a5568; font-size: 13px; }
+  ul { padding-left: 20px; }
+  ul li { margin-bottom: 8px; color: #4a5568; }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+  .badge-good { background: #c6f6d5; color: #22543d; }
+  .badge-warn { background: #fed7aa; color: #7c2d12; }
+  .badge-bad { background: #feb2b2; color: #742a2a; }
+  .exclusions ul { list-style: none; padding-left: 0; }
+  .exclusions li {
+    padding: 8px 12px;
+    background: #fff5f5;
+    border-left: 3px solid #fc8181;
+    margin-bottom: 8px;
+    border-radius: 4px;
+  }
+  .exclusions li::before {
+    content: "✗ ";
+    color: #c53030;
+    font-weight: bold;
+    margin-right: 4px;
+  }
+  .tips ul { list-style: none; padding-left: 0; }
+  .tips li {
+    padding: 12px 16px;
+    background: #f7fafc;
+    border-left: 3px solid #667eea;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  .provider-row {
+    padding: 10px 0;
+    border-bottom: 1px solid #edf2f7;
+  }
+  .provider-row:last-child { border-bottom: none; }
+  .provider-row strong { color: #1a202c; }
+  .provider-row .loc { color: #718096; font-size: 13px; margin-left: 8px; }
+  a { color: #667eea; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .price-card {
+    text-align: center;
+    background: linear-gradient(135deg, #f6d365, #fda085);
+    color: #4a2511;
+    border: none;
+  }
+  .price-card .stat { color: #4a2511; }
+  .price-card h2 { color: rgba(74,37,17,0.7); }
+  .footnote {
+    background: #ebf8ff;
+    border-left: 4px solid #4299e1;
+    padding: 12px 16px;
+    margin-top: 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #2c5282;
+  }
+  .footer {
+    text-align: center;
+    padding: 32px 16px 16px;
+    color: #a0aec0;
+    font-size: 12px;
+  }
+  .footer a { color: #a0aec0; }
+  .section-title {
+    font-size: 20px;
+    color: #1a202c;
+    margin: 24px 0 16px;
+    font-weight: 700;
+  }
+  .green { color: #22543d; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>The Skincare Stack</h1>
+  <p class="tagline">Wrinkles + Dark Spots + Lift — without injectables, fillers, or surgery</p>
+  <p class="subtitle">Built for West Los Angeles · Last updated: April 30, 2026</p>
+</header>
+
+<div class="grid">
+  <div class="card hero">
+    <h2>The premise</h2>
+    <h3>Best non-invasive results, honest value</h3>
+    <p>A research-driven personal stack of treatments that visibly improve wrinkles, dark spots, and skin firmness — measured against the Formula Fig Longevity Treatment as the benchmark. No Botox, no fillers, no surgery, no marketing fluff.</p>
+  </div>
+  <div class="card price-card">
+    <h2>Year-1 cost</h2>
+    <div class="stat">$8,900–$11,000</div>
+    <p class="stat-label">Smart-pricing, non-Beverly-Hills version. Compares favorably to a $25K+ facelift or $2K+/yr Botox maintenance.</p>
+  </div>
+</div>
+
+<h2 class="section-title">🌿 The Stack at a Glance</h2>
+<div class="card">
+  <table>
+    <thead>
+      <tr>
+        <th>Cadence</th>
+        <th>Treatment</th>
+        <th>What it does</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="cadence">Daily AM</td>
+        <td class="treatment">Vitamin C → moisturizer → SPF 30+</td>
+        <td class="purpose">Antioxidant + brightening + UV protection (the foundation)</td>
+      </tr>
+      <tr>
+        <td class="cadence">Daily PM</td>
+        <td class="treatment">Tretinoin (or bakuchiol) + niacinamide</td>
+        <td class="purpose">Wrinkles, texture, dark spots over time</td>
+      </tr>
+      <tr>
+        <td class="cadence">5–7 nights/wk</td>
+        <td class="treatment">LED mask (red + NIR 850nm)</td>
+        <td class="purpose">10–20 min — collagen support, glow, healing</td>
+      </tr>
+      <tr>
+        <td class="cadence">5×/wk</td>
+        <td class="treatment">Microcurrent device</td>
+        <td class="purpose">Lift / muscle tone — daily-discipline modality</td>
+      </tr>
+      <tr>
+        <td class="cadence">Every 4–8 weeks</td>
+        <td class="treatment">Microneedling + PDRN/Exosomes (Formula Fig–style)</td>
+        <td class="purpose">Surface quality, glow, fine lines</td>
+      </tr>
+      <tr>
+        <td class="cadence">Quarterly</td>
+        <td class="treatment">Forever Young BBL (Sciton)</td>
+        <td class="purpose">Dark spots, anti-aging gene-expression signal</td>
+      </tr>
+      <tr>
+        <td class="cadence">Annually</td>
+        <td class="treatment">Sofwave (or Ultherapy)</td>
+        <td class="purpose">Lift / SMAS-layer collagen — once/year is enough</td>
+      </tr>
+      <tr>
+        <td class="cadence">1× / year (optional)</td>
+        <td class="treatment">RF microneedling (Morpheus8) + PRP/PRF</td>
+        <td class="purpose">Bigger collagen pulse — adds depth</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="section-title">🧴 My Daily Routine — Real Products</h2>
+<p style="color: #4a5568; margin-bottom: 16px; font-size: 14px;">
+  An evidence-based stack that blends natural artisan products from <strong><a href="https://www.etsy.com/shop/MtnHouseApothecary" target="_blank">Mountain House Apothecary</a></strong> (founder: Aja Riddle) with proven Korean barrier care, drugstore staples, and clinical actives. Built for nightly skin cycling so strong actives never compound.
+</p>
+
+<div class="grid">
+  <div class="card">
+    <h2>☀️ Morning Routine</h2>
+    <table>
+      <tr><td class="cadence">1</td><td class="treatment">Splash water OR CeraVe Hydrating Cleanser</td></tr>
+      <tr><td class="cadence">2</td><td class="treatment">Mountain House <strong>Sticky Smooth Toner</strong></td></tr>
+      <tr><td class="cadence">3</td><td class="treatment"><strong>Timeless 20% Vitamin C + E Ferulic</strong> <span class="badge badge-good">SkinCeuticals dupe</span></td></tr>
+      <tr><td class="cadence">4</td><td class="treatment">Cosmedica Pure Hyaluronic Acid Serum</td></tr>
+      <tr><td class="cadence">5</td><td class="treatment">Mountain House <strong>Squalane Glow Oil</strong> OR Avinichi Noni Day Cream</td></tr>
+      <tr><td class="cadence">6</td><td class="treatment"><strong>Haruharu Wonder SPF 50+ PA++++</strong> <span class="badge badge-good">non-negotiable</span></td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h2>🌙 Evening Routine</h2>
+    <table>
+      <tr><td class="cadence">1</td><td class="treatment">Mountain House <strong>Ultimate Cleansing Oil</strong> (1st cleanse)</td></tr>
+      <tr><td class="cadence">2</td><td class="treatment">CeraVe Hydrating Cleanser (2nd cleanse)</td></tr>
+      <tr><td class="cadence">3</td><td class="treatment">Pat skin <em>fully</em> dry</td></tr>
+      <tr><td class="cadence">4</td><td class="treatment"><em>Active varies — see skin cycling below</em></td></tr>
+      <tr><td class="cadence">5</td><td class="treatment">TonyMoly Ceramide Mochi Milky Toner</td></tr>
+      <tr><td class="cadence">6</td><td class="treatment">Cosmedica Pure HA Serum</td></tr>
+      <tr><td class="cadence">7</td><td class="treatment">Mountain House <strong>Magic Melt</strong> moisturizer</td></tr>
+      <tr><td class="cadence">8</td><td class="treatment">Weleda Skin Food (dry patches) OR Sulwhasoo Overnight Mask</td></tr>
+      <tr><td class="cadence">9</td><td class="treatment"><strong>LED mask</strong> 10–20 min — red + NIR 850nm</td></tr>
+    </table>
+  </div>
+</div>
+
+<h2 class="section-title">🔄 Skin Cycling — 4-Night Rotation</h2>
+<div class="card">
+  <p style="color: #4a5568; margin-bottom: 12px; font-size: 14px;">
+    Strong actives are <strong>never</strong> stacked on the same night. Two active nights, two recovery nights — sustainable, evidence-based, prevents barrier breakdown.
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th>Night</th>
+        <th>Active in Step 4</th>
+        <th>Why</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="cadence">1 — Acid</td>
+        <td class="treatment">The Ordinary Lactic Acid 10% + HA</td>
+        <td class="purpose">Gentle exfoliation, smooths texture, mild brightening</td>
+      </tr>
+      <tr>
+        <td class="cadence">2 — Retinoid</td>
+        <td class="treatment">Tazret 0.1% Tazarotene <span class="badge badge-warn">RX</span> OR Trader Joe's 0.3% Retinol</td>
+        <td class="purpose">Collagen, fine lines, dark spots</td>
+      </tr>
+      <tr>
+        <td class="cadence">3 — Recovery</td>
+        <td class="treatment">Matrixyl Synthe'6 Serum + Avinichi Mulberry Wrinkle Reversal</td>
+        <td class="purpose">Peptides — barrier rebuild, no irritation</td>
+      </tr>
+      <tr>
+        <td class="cadence">4 — Recovery</td>
+        <td class="treatment">CoQ10 Serum + Sulwhasoo Overnight Mask</td>
+        <td class="purpose">Antioxidant + deep hydration overnight</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="section-title">📅 Weekly + Recovery Adjustments</h2>
+<div class="grid">
+  <div class="card">
+    <h2>Weekly Extras</h2>
+    <table>
+      <tr>
+        <td class="cadence">1×/wk MAX</td>
+        <td class="treatment">The Ordinary AHA 30% + BHA 2% Peel <em>OR</em> Drunk Elephant T.L.C. Sukari Babyfacial — never both same week, replaces Night 1</td>
+      </tr>
+      <tr>
+        <td class="cadence">2–3×/wk</td>
+        <td class="treatment">ForWealthy CICA Sheet Mask — calming, post-stress, pre-event</td>
+      </tr>
+      <tr>
+        <td class="cadence">5–7×/wk</td>
+        <td class="treatment">LED mask (red + NIR 850nm)</td>
+      </tr>
+      <tr>
+        <td class="cadence">5×/wk</td>
+        <td class="treatment">Microcurrent device — lift discipline</td>
+      </tr>
+      <tr>
+        <td class="cadence">1×/2 wks</td>
+        <td class="treatment">VT Reedle Shot mask — never same week as pro microneedling</td>
+      </tr>
+    </table>
+  </div>
+  <div class="card">
+    <h2>Post-Treatment Recovery</h2>
+    <p style="color: #4a5568; margin-bottom: 12px; font-size: 14px;">
+      For 7 days after a microneedling / Longevity Treatment, the cycling routine flexes:
+    </p>
+    <table>
+      <tr>
+        <td class="cadence">Day 0–2</td>
+        <td class="treatment"><strong>Gentle only</strong> — cleanser, HA, Squalane Glow Oil, Magic Melt, CICA mask, SPF. No LED, no actives</td>
+      </tr>
+      <tr>
+        <td class="cadence">Day 3+</td>
+        <td class="treatment">LED mask returns. Niacinamide OK</td>
+      </tr>
+      <tr>
+        <td class="cadence">Day 5+</td>
+        <td class="treatment">Vitamin C resumes gently. Peptides return (Matrixyl, CoQ10, Avinichi)</td>
+      </tr>
+      <tr>
+        <td class="cadence">Day 7+</td>
+        <td class="treatment">Trader Joe's 0.3% retinol returns at low frequency</td>
+      </tr>
+      <tr>
+        <td class="cadence">Day 9+</td>
+        <td class="treatment">Lactic acid resumes. Tazret stays paused longer (after wedding / event)</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<h2 class="section-title">⏱️ Speed of Results</h2>
+<div class="card">
+  <table>
+    <thead>
+      <tr>
+        <th>Treatment</th>
+        <th>First visible</th>
+        <th>Peak result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="treatment">PDRN microneedling</td>
+        <td>5–7 days <span class="badge badge-good">fastest</span></td>
+        <td>1 week, continues 6 weeks</td>
+      </tr>
+      <tr>
+        <td class="treatment">Forever Young BBL</td>
+        <td>7–14 days</td>
+        <td>2–3 weeks per session, cumulative</td>
+      </tr>
+      <tr>
+        <td class="treatment">Sofwave / Ultherapy</td>
+        <td>6–8 weeks</td>
+        <td>2–6 months <span class="badge badge-warn">slowest</span></td>
+      </tr>
+      <tr>
+        <td class="treatment">Topicals (tretinoin, etc.)</td>
+        <td>2–4 weeks (texture)</td>
+        <td>6 months (full effect)</td>
+      </tr>
+      <tr>
+        <td class="treatment">LED mask, microcurrent</td>
+        <td>Hours (transient)</td>
+        <td>8 weeks of consistency</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="section-title">🧬 Compare the Microneedling Boosters</h2>
+<p style="color: #4a5568; margin-bottom: 16px; font-size: 14px;">
+  Microneedling itself creates the channels. What goes <em>through</em> those channels makes the real difference. Here's the honest landscape — most clinics push one or two of these, but they're not all equal.
+</p>
+<div class="card">
+  <table>
+    <thead>
+      <tr>
+        <th>Booster</th>
+        <th>What it is</th>
+        <th>Source</th>
+        <th>Effect duration</th>
+        <th>vs PDRN</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="treatment"><strong>Exosomes</strong> (Benev)</td>
+        <td>Cellular signaling vesicles — newest tech</td>
+        <td>Plant or stem-cell derived</td>
+        <td>Pure regenerative signal</td>
+        <td><span class="badge badge-good">often better</span></td>
+      </tr>
+      <tr>
+        <td class="treatment"><strong>PRF</strong></td>
+        <td>Platelet-Rich Fibrin — slower spin, no anticoagulants, fibrin matrix</td>
+        <td><strong>Your own blood</strong> (autologous)</td>
+        <td><strong>7–10 days sustained release</strong></td>
+        <td><span class="badge badge-good">arguably better</span></td>
+      </tr>
+      <tr>
+        <td class="treatment"><strong>PDRN / Salmon DNA</strong> (Rejuran)</td>
+        <td>Purified salmon sperm DNA fragments — Korean gold standard</td>
+        <td>Salmon</td>
+        <td>Activates skin's repair receptors</td>
+        <td><span class="badge badge-good">benchmark</span></td>
+      </tr>
+      <tr>
+        <td class="treatment"><strong>PRP</strong></td>
+        <td>Platelet-Rich Plasma — single spin, liquid, older protocol</td>
+        <td><strong>Your own blood</strong> (autologous)</td>
+        <td>Hours to 2 days</td>
+        <td><span class="badge badge-warn">comparable</span></td>
+      </tr>
+      <tr>
+        <td class="treatment">Peptides</td>
+        <td>Lab-made signaling protein fragments</td>
+        <td>Synthetic</td>
+        <td>Targeted collagen/elastin signal</td>
+        <td><span class="badge badge-warn">gentler</span></td>
+      </tr>
+      <tr>
+        <td class="treatment">Stem-Cell Serum</td>
+        <td>Plant-derived stem cell extract (NOT real human stem cells in US)</td>
+        <td>Plants</td>
+        <td>Topical antioxidant signaling</td>
+        <td><span class="badge badge-bad">weakest</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="footnote" style="margin-top: 16px;">
+    <strong>Heads up:</strong> "Vampire Facelift" is PRP/PRF <em>microinjections</em> with no microneedling — different treatment, less collagen induction. "Vampire Facial" IS microneedling + PRP/PRF. Confirm by name. And <strong>Morpheus8 / RF microneedling is a different machine</strong> (needles + radiofrequency heat) — deeper, more downtime. The booster question applies on top of either, but recovery time scales accordingly.
+  </div>
+</div>
+
+<h2 class="section-title">📞 Where to Book in West LA</h2>
+<div class="grid">
+  <div class="card">
+    <h2>PDRN microneedling</h2>
+    <h3>Every 4–8 weeks</h3>
+    <div class="provider-row">
+      <strong>Formula Fig Culver City</strong> <span class="loc">9300 Culver Blvd · 1-888-477-6199 · $475 member / $550 drop-in (incl. exosomes)</span>
+    </div>
+    <div class="provider-row">
+      <strong>Formula Fig WeHo</strong> <span class="loc">926 N Sycamore Ave · 1-888-477-6199</span>
+    </div>
+    <div class="provider-row">
+      <strong>Beverly Hills Plaza Medi Spa</strong> <span class="loc">9730 Wilshire Blvd · Microneedling + Salmon DNA / Exosomes (Groupon $151–175 with code)</span>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Forever Young BBL (Sciton)</h2>
+    <h3>Quarterly</h3>
+    <div class="provider-row">
+      <strong>Marina MedSpa</strong> <span class="loc">Marina del Rey</span>
+    </div>
+    <div class="provider-row">
+      <strong>Aesthetic MdR</strong> <span class="loc">Marina del Rey</span>
+    </div>
+    <div class="footnote">
+      ⚠️ Confirm <strong>"Sciton BBL"</strong> by name when calling — generic IPL is NOT the same.
+    </div>
+  </div>
+  <div class="card">
+    <h2>Sofwave (annual lift)</h2>
+    <h3>Once a year</h3>
+    <div class="provider-row">
+      <strong>Skin 22 Concierge Skin</strong> <span class="loc">Beverly Hills · California's #1-rated · active <strong>$1,000 OFF</strong> promo</span>
+    </div>
+    <div class="provider-row">
+      <strong>Ava MD Santa Monica</strong> <span class="loc">(310) 828-2282</span>
+    </div>
+  </div>
+  <div class="card">
+    <h2>RF microneedling (optional)</h2>
+    <h3>1×/year</h3>
+    <div class="provider-row">
+      <strong>Mirror Mirror</strong> <span class="loc">Westwood — Morpheus8</span>
+    </div>
+    <div class="provider-row">
+      <strong>Stoker Aesthetics</strong> <span class="loc">Marina del Rey</span>
+    </div>
+    <div class="provider-row">
+      <strong>Enforma Venice</strong> <span class="loc">1613 Abbot Kinney · Morpheus8 + Tixel 2</span>
+    </div>
+  </div>
+</div>
+
+<h2 class="section-title">💎 Top Insider Tips</h2>
+<div class="card tips">
+  <ul>
+    <li><strong>Beverly Hills runs a 20–40% zip-code premium</strong> for the same modality. Use Marina del Rey / Santa Monica / Westwood / Culver City for everything except the Skin 22 Sofwave promo (which offsets the BH markup).</li>
+    <li><strong>Sciton BBL ≠ generic IPL.</strong> If a clinic just says "BBL" or "IPL," confirm the device by name. Skin Laundry uses Q-switched YAG and IPL — not Sciton BBL.</li>
+    <li><strong>Tretinoin via online tele-RX</strong> (Apostrophe / Curology / Nurx) is $15–60/month — vastly cheaper than $80+ retinol serums and far more effective.</li>
+    <li><strong>The Ordinary Niacinamide 10% + Zinc</strong> (~$8) clinically matches $80 luxury serums.</li>
+    <li><strong>Maelove Glow Maker</strong> ($30) is the consistently cited dupe for SkinCeuticals CE Ferulic ($180+).</li>
+    <li><strong>Skip "salmon serum" without microneedling</strong> — PDRN molecules can't penetrate intact skin. Real benefit only happens through microneedling channels.</li>
+    <li><strong>Sofwave usually beats Ultherapy on price + comfort + downtime</strong> for comparable mid-face results — often $1,000+ cheaper.</li>
+    <li><strong>Don't bundle PDRN + exosomes + cold plasma in one session.</strong> Marginal evidence beyond PDRN alone — pay for one well-done modality.</li>
+    <li><strong>BBL is best in fall / winter</strong> — sun avoidance window is easier to hold. Many West LA clinics run "BBL season" specials Oct–Feb.</li>
+  </ul>
+</div>
+
+<h2 class="section-title">🚫 What's NOT in the stack (hard exclusions)</h2>
+<div class="card exclusions">
+  <ul>
+    <li><strong>Botox / Dysport / Xeomin / Daxxify</strong> (any neurotoxin injectables)</li>
+    <li><strong>Dermal fillers</strong> (HA, Sculptra, Radiesse, fat transfer)</li>
+    <li><strong>Cosmetic surgery</strong> (facelift, blepharoplasty, surgical thread lifts)</li>
+    <li><strong>Unregulated supplements</strong> with no published clinical evidence</li>
+  </ul>
+</div>
+
+<h2 class="section-title">📚 Reference Benchmark</h2>
+<div class="card">
+  <h3>Formula Fig Longevity Treatment</h3>
+  <p style="color: #4a5568; margin-bottom: 12px;">
+    The protocol every other treatment in this stack is measured against. Microneedling + PDRN (salmon DNA) + exosomes, in a 60-minute session.
+  </p>
+  <table>
+    <tr><th style="width: 30%;">Mechanism</th><td>Microneedling creates microchannels; PDRN serum penetrates and stimulates collagen/elastin; exosomes amplify regenerative signaling.</td></tr>
+    <tr><th>Downtime</th><td>Mild redness 24–48h, fresh glow within ~5 days, peak around 1 week.</td></tr>
+    <tr><th>Cadence</th><td>Every 8 weeks initially, alternated with Collagen + Texture every 4 weeks for maintenance.</td></tr>
+    <tr><th>Price</th><td>$475 member / $550 drop-in (Los Angeles).</td></tr>
+    <tr><th>Locations</th><td>Culver City + WeHo (LA), plus Vancouver and Toronto.</td></tr>
+  </table>
+</div>
+
+<h2 class="section-title">🧠 Decision Framework</h2>
+<div class="grid-3">
+  <div class="card">
+    <h2>Value rating ★★★★★</h2>
+    <p style="font-size: 14px; color: #4a5568;">Honest result-per-dollar at any price tier. A $5,000 treatment can be ★★★★★ if it durably delivers; a $100 one can be ★ if it's marketing fluff.</p>
+  </div>
+  <div class="card">
+    <h2>Naturalness ★★★★★</h2>
+    <p style="font-size: 14px; color: #4a5568;">How aligned a treatment is with healthy / non-toxic / minimal-intervention preferences. Bias toward natural where evidence is comparable.</p>
+  </div>
+  <div class="card">
+    <h2>Evidence quality</h2>
+    <p style="font-size: 14px; color: #4a5568;"><span class="badge badge-good">strong</span> peer-reviewed RCTs · <span class="badge badge-warn">moderate</span> clinical real-world · <span class="badge badge-bad">weak</span> marketing only</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Built with <a href="https://claude.com/claude-code">Claude Code</a> · Research project synced daily from iCloud → Google Drive · Updated April 30, 2026</p>
+</div>
+
+</div>
+</body>
+</html>
