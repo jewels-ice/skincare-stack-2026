@@ -206,6 +206,82 @@
     margin-top: 12px;
   }
   .digest-panel.no-flags .digest-meta { color: #718096; }
+  .step-num {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #667eea;
+    color: white;
+    text-align: center;
+    line-height: 22px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 8px;
+  }
+  .product-name { font-weight: 600; color: #1a202c; }
+  .product-meta { color: #718096; font-size: 12px; margin-top: 2px; }
+  .mha-badge {
+    display: inline-block;
+    background: #d4f5d4;
+    color: #1f5f3a;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-left: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+  .key-badge {
+    display: inline-block;
+    background: #fed7aa;
+    color: #7c2d12;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-left: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+  .cycling-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 8px;
+  }
+  @media (max-width: 768px) {
+    .cycling-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .cycling-card {
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background: #f7fafc;
+  }
+  .cycling-card.acid { background: #fef3c7; border-color: #fcd34d; }
+  .cycling-card.retinoid { background: #ede9fe; border-color: #c4b5fd; }
+  .cycling-card.recovery { background: #d1fae5; border-color: #6ee7b7; }
+  .cycling-card .night {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    color: #4a5568;
+    margin-bottom: 6px;
+  }
+  .cycling-card .focus { font-size: 14px; font-weight: 600; color: #1a202c; }
+  .cycling-card .product { font-size: 12px; color: #4a5568; margin-top: 4px; }
+  .legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+    font-size: 12px;
+    color: #4a5568;
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
 </style>
 </head>
 <body>
@@ -420,6 +496,214 @@
       </tr>
     </table>
   </div>
+</div>
+
+<h2 class="section-title">💄 My Daily Routine</h2>
+
+<p class="legend">
+  <span><span class="mha-badge">🌿 MHA</span> Mountain House Apothecary (Aja Riddle's natural brand — sister of close friend Deyá)</span>
+  <span><span class="key-badge">★ KEY</span> Highest-impact step</span>
+</p>
+
+<div class="grid">
+
+  <div class="card">
+    <h2>☀️ Morning</h2>
+    <table>
+      <tbody>
+        <tr><td><span class="step-num">1</span></td><td><span class="product-name">Splash water OR CeraVe Hydrating Cleanser</span><div class="product-meta">Skip foaming AM unless oily</div></td></tr>
+        <tr><td><span class="step-num">2</span></td><td><span class="product-name">Sticky Smooth Toner</span><span class="mha-badge">🌿 MHA</span><div class="product-meta">Cotton swipe — face, neck, chest</div></td></tr>
+        <tr><td><span class="step-num">3</span></td><td><span class="product-name">Timeless 20% Vitamin C + E Ferulic</span><span class="key-badge">★ KEY</span><div class="product-meta">Wait 60 sec to absorb — SkinCeuticals dupe</div></td></tr>
+        <tr><td><span class="step-num">4</span></td><td><span class="product-name">Cosmedica Pure Hyaluronic Acid Serum</span><div class="product-meta">Locks moisture in</div></td></tr>
+        <tr><td><span class="step-num">5</span></td><td><span class="product-name">Squalane Glow Oil</span><span class="mha-badge">🌿 MHA</span> <strong style="color: #718096;">OR</strong> <span class="product-name">Avinichi Noni Day Cream</span><div class="product-meta">Pick one — oil for dewy, cream for plumper</div></td></tr>
+        <tr><td><span class="step-num">6</span></td><td><span class="product-name">Haruharu Wonder Black Rice SPF 50+ PA++++</span><span class="key-badge">★ KEY</span><div class="product-meta">NON-NEGOTIABLE — single highest-ROI anti-aging step you do all day</div></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>🌙 Evening (every night)</h2>
+    <table>
+      <tbody>
+        <tr><td><span class="step-num">1</span></td><td><span class="product-name">Aja's Ultimate Cleansing Oil</span><span class="mha-badge">🌿 MHA</span><div class="product-meta">First cleanse — removes makeup + SPF</div></td></tr>
+        <tr><td><span class="step-num">2</span></td><td><span class="product-name">CeraVe Hydrating Cleanser</span><div class="product-meta">Second cleanse — Dr. Kormeili's #1 pick</div></td></tr>
+        <tr><td><span class="step-num">3</span></td><td><strong style="color:#7c2d12;">PAT SKIN FULLY DRY</strong><div class="product-meta">Wet skin = more irritation from actives</div></td></tr>
+        <tr><td><span class="step-num">4</span></td><td><strong style="color:#667eea;">→ Cycling-night active (see below)</strong><div class="product-meta">Wait 5 min before next step</div></td></tr>
+        <tr><td><span class="step-num">5</span></td><td><span class="product-name">TonyMoly Ceramide Mochi Milky Toner</span><div class="product-meta">Barrier repair</div></td></tr>
+        <tr><td><span class="step-num">6</span></td><td><span class="product-name">Cosmedica Pure HA Serum</span><div class="product-meta">Hydration layer</div></td></tr>
+        <tr><td><span class="step-num">7</span></td><td><span class="product-name">Magic Melt</span><span class="mha-badge">🌿 MHA</span><div class="product-meta">Moisturizer</div></td></tr>
+        <tr><td><span class="step-num">8</span></td><td><span class="product-name">Weleda Skin Food</span> on dry patches OR <span class="product-name">Sulwhasoo Overnight Mask</span> 1–2×/wk<div class="product-meta">Optional rich top-coat</div></td></tr>
+        <tr><td><span class="step-num">9</span></td><td><span class="product-name">LED mask</span> 10–20 min<span class="key-badge">★ KEY</span><div class="product-meta">Red + NIR 850nm. After PM routine settles</div></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<h2 class="section-title">🔄 Skin Cycling — 4-Night Active Rotation</h2>
+<div class="card">
+  <p style="font-size: 14px; color: #4a5568; margin-bottom: 16px;">
+    Don't stack strong actives every night. Skin cycling is 2 active nights + 2 recovery nights — sustainable, evidence-based, matches Aja's "max 1×/week" philosophy with safer pacing for compounding results.
+  </p>
+  <div class="cycling-grid">
+    <div class="cycling-card acid">
+      <div class="night">Night 1</div>
+      <div class="focus">🍋 Acid</div>
+      <div class="product"><strong>The Ordinary Lactic Acid 10% + HA</strong></div>
+      <div class="product" style="margin-top: 6px;">Gentle exfoliation, smooths texture, mild brightening</div>
+    </div>
+    <div class="cycling-card retinoid">
+      <div class="night">Night 2</div>
+      <div class="focus">💜 Retinoid</div>
+      <div class="product"><strong>Tazret Forte 0.1% (RX)</strong> OR Trader Joe's 0.3% Retinol</div>
+      <div class="product" style="margin-top: 6px;">Collagen, fine lines, dark spots</div>
+    </div>
+    <div class="cycling-card recovery">
+      <div class="night">Night 3</div>
+      <div class="focus">🌱 Recovery — Peptides</div>
+      <div class="product"><strong>Matrixyl Synthe'6</strong> + Avinichi Mulberry Wrinkle Reversal</div>
+      <div class="product" style="margin-top: 6px;">Barrier rebuild, peptide signal (no irritation — apply directly after step 3)</div>
+    </div>
+    <div class="cycling-card recovery">
+      <div class="night">Night 4</div>
+      <div class="focus">🌱 Recovery — CoQ10</div>
+      <div class="product"><strong>CoQ10 Serum</strong> + Sulwhasoo Overnight Mask</div>
+      <div class="product" style="margin-top: 6px;">Antioxidant + deep hydration</div>
+    </div>
+  </div>
+</div>
+
+<h2 class="section-title">📅 Weekly Extras</h2>
+<div class="card">
+  <table>
+    <thead>
+      <tr><th>Frequency</th><th>Treatment</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="cadence">1×/week MAX</td>
+        <td class="treatment">The Ordinary AHA 30% + BHA 2% Peeling Solution <strong style="color:#718096;">OR</strong> Drunk Elephant T.L.C. Sukari Babyfacial</td>
+        <td class="purpose">NEVER both same week. NEVER on retinoid/lactic nights. Replaces a Night 1. Wash off after 10 min.</td>
+      </tr>
+      <tr>
+        <td class="cadence">2–3×/week</td>
+        <td class="treatment">ForWealthy CICA Sheet Mask</td>
+        <td class="purpose">Calming. Use after AHA peel days, post-stress, or pre-event.</td>
+      </tr>
+      <tr>
+        <td class="cadence">5–7 nights/week</td>
+        <td class="treatment">LED mask (red + NIR 850nm)</td>
+        <td class="purpose">10–20 min. After PM routine settles.</td>
+      </tr>
+      <tr>
+        <td class="cadence">5×/wk loading → 2–3×/wk maint</td>
+        <td class="treatment">Microcurrent device <span class="product-meta" style="margin-top:2px;display:inline;">(when found / replaced)</span></td>
+        <td class="purpose">Lift discipline modality. Best ROI lift device of any tier — IF used consistently.</td>
+      </tr>
+      <tr>
+        <td class="cadence">1×/2 weeks</td>
+        <td class="treatment">VT Reedle Shot mask</td>
+        <td class="purpose">Spicule needling. NEVER same week as professional microneedling.</td>
+      </tr>
+      <tr>
+        <td class="cadence">As needed</td>
+        <td class="treatment">Curél Deep Moisture Spray</td>
+        <td class="purpose">Mid-day refresh / post-flight recovery.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="section-title">🧴 Full Kit Inventory</h2>
+<div class="card">
+  <p style="font-size: 14px; color: #4a5568; margin-bottom: 16px;">
+    Every product is in active use across the routine above. Brands featured: <strong>Mountain House Apothecary</strong> (Aja Riddle's natural artisan line), <strong>The Ordinary</strong> + <strong>Drunk Elephant</strong> + <strong>CeraVe</strong> + <strong>Timeless</strong> (Dr. Tanya Kormeili's recommended brand picks), Korean barrier favorites (TonyMoly, Sulwhasoo, Haruharu), and clinical-grade actives (Tazret, Avinichi, Matrixyl).
+  </p>
+  <div class="grid-3">
+    <div>
+      <h3 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: #718096; margin-bottom: 8px;">Cleansers</h3>
+      <ul>
+        <li>Aja's Ultimate Cleansing Oil <span class="mha-badge">🌿 MHA</span></li>
+        <li>CeraVe Hydrating Cleanser</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: #718096; margin-bottom: 8px;">Toners</h3>
+      <ul>
+        <li>Sticky Smooth Toner <span class="mha-badge">🌿 MHA</span></li>
+        <li>TonyMoly Wonder Ceramide Mochi Milky Toner</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: #718096; margin-bottom: 8px;">Vitamin C / Antioxidant</h3>
+      <ul>
+        <li>Timeless 20% C + E Ferulic + Matrixyl Synthe'6</li>
+        <li>Timeless CoQ10 + Matrixyl 3000</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: #718096; margin-bottom: 8px;">Hydration / HA</h3>
+      <ul>
+        <li>Cosmedica Pure Hyaluronic Acid Serum</li>
+        <li>Curél Deep Moisture Spray</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: #718096; margin-bottom: 8px;">Oils & Moisturizers</h3>
+      <ul>
+        <li>Squalane Glow Oil <span class="mha-badge">🌿 MHA</span></li>
+        <li>Magic Melt <span class="mha-badge">🌿 MHA</span></li>
+        <li>Avinichi Noni Day Cream</li>
+        <li>Weleda Skin Food</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: #718096; margin-bottom: 8px;">Retinoids</h3>
+      <ul>
+        <li>Tazret Forte 0.1% (Tazarotene RX)</li>
+        <li>Trader Joe's Retinol 0.3%</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: #718096; margin-bottom: 8px;">Acids / Peels</h3>
+      <ul>
+        <li>The Ordinary Lactic Acid 10% + HA</li>
+        <li>The Ordinary AHA 30% + BHA 2% Peeling Solution</li>
+        <li>Drunk Elephant T.L.C. Sukari Babyfacial</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: #718096; margin-bottom: 8px;">Specialty Treatments</h3>
+      <ul>
+        <li>Avinichi Mulberry Wrinkle Reversal Solution</li>
+        <li>VT Reedle Shot mask</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: #718096; margin-bottom: 8px;">Masks &amp; Overnight</h3>
+      <ul>
+        <li>Sulwhasoo Overnight Vitalizing Mask</li>
+        <li>ForWealthy CICA Sheet Masks</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: #718096; margin-bottom: 8px;">Sun Protection</h3>
+      <ul>
+        <li>Haruharu Wonder Black Rice SPF 50+ PA++++ <span class="key-badge">★ KEY</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: #718096; margin-bottom: 8px;">Devices</h3>
+      <ul>
+        <li>4-mode LED mask (red + NIR 850 + blue + violet)</li>
+        <li>Microcurrent — Martha Weinstein NanoCurrent (locating) <em>or</em> ZIIP HALO replacement</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="footnote">
+  💡 <strong>About Aja's brand:</strong> Mountain House Apothecary is handcrafted by Aja Riddle in small batches. Find it on Etsy at <a href="https://www.etsy.com/shop/MtnHouseApothecary" target="_blank" rel="noopener">MtnHouseApothecary</a>. The natural-base layer of this routine.
 </div>
 
 <h2 class="section-title">⏱️ Speed of Results</h2>
