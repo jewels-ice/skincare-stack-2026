@@ -282,6 +282,38 @@
     color: #4a5568;
   }
   .legend span { display: inline-flex; align-items: center; gap: 6px; }
+
+  /* Print button */
+  .print-btn {
+    display: inline-block;
+    margin-left: 12px;
+    padding: 8px 16px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .print-btn:hover { background: #5a6fd8; }
+
+  /* Mark print-only section + print rules */
+  .print-section { /* the part that should print */ }
+  @media print {
+    body { background: white; padding: 0; }
+    .container { max-width: 100%; }
+    /* Hide everything except the print section */
+    body > .container > *:not(.print-section) { display: none !important; }
+    .print-section { display: block !important; page-break-inside: avoid; }
+    .print-section .print-btn { display: none; }
+    .print-section h2.section-title { font-size: 22px; margin-bottom: 16px; }
+    .print-section .card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+    .print-section table { font-size: 12px; }
+    .print-section a { color: black; text-decoration: none; }
+    .print-section .footnote { background: #f5f5f5 !important; border-left: 3px solid #999; }
+  }
 </style>
 </head>
 <body>
@@ -315,7 +347,8 @@
 </div>
 <!-- DAILY-SEARCH-PANEL-END -->
 
-<h2 class="section-title">🌿 The Stack at a Glance</h2>
+<div class="print-section">
+<h2 class="section-title">🌿 The Stack at a Glance <button class="print-btn" onclick="window.print()">🖨️ Print these 4 sections</button></h2>
 <div class="card">
   <table>
     <thead>
@@ -497,6 +530,9 @@
     </table>
   </div>
 </div>
+
+</div>
+<!-- end .print-section -->
 
 <h2 class="section-title">🧴 Full Kit Inventory</h2>
 <div class="card">
